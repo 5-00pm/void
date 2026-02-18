@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Home Page -->
+    <section id="home-page" class="page active">
+        <div class="container">
+            <div class="card">
+                <h1>Quiz Setup</h1>
+                <p class="subtitle">Select your quiz preferences to begin</p>
+                
+                <div class="form-group">
+                    <label for="subject-select">Subject</label>
+                    <select id="subject-select" class="select-input">
+                        <option value="">Choose a subject</option>
+                    </select>
+                </div>
+
+                <div class="form-group" id="grade-group" style="display: none;">
+                    <label for="grade-select">Grade</label>
+                    <select id="grade-select" class="select-input">
+                        <option value="">Choose a grade</option>
+                    </select>
+                </div>
+
+                <div class="form-group" id="unit-group" style="display: none;">
+                    <label for="unit-select">Unit</label>
+                    <select id="unit-select" class="select-input">
+                        <option value="">Choose a unit</option>
+                    </select>
+                </div>
+
+                <button id="proceed-btn" class="btn btn-primary" disabled>Continue to Setup</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pre-Quiz Setup -->
+    <section id="setup-page" class="page">
+        <div class="container">
+            <div class="card">
+                <h1>Set Your Goal</h1>
+                <p class="subtitle">How much time do you want to spend on this quiz?</p>
+                
+                <div class="form-group">
+                    <label for="time-input">Time Goal (minutes)</label>
+                    <input 
+                        type="number" 
+                        id="time-input" 
+                        class="text-input" 
+                        min="1" 
+                        max="180" 
+                        placeholder="Enter minutes (1-180)"
+                    >
+                    <span class="error-msg" id="time-error"></span>
+                </div>
+
+                <div class="button-group">
+                    <button id="back-to-home-btn" class="btn btn-secondary">Back</button>
+                    <button id="start-quiz-btn" class="btn btn-primary" disabled>Start Quiz</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quiz Interface -->
+    <section id="quiz-page" class="page">
+        <!-- Top Bar -->
+        <div class="quiz-header">
+            <div class="header-left">
+                <button id="theme-toggle" class="icon-btn" aria-label="Change theme">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="header-center">
+                <div class="timer" id="timer">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                        <path d="M8 3.5a.5.5 0 00-1 0V9a.5.5 0 00.252.434l3.5 2a.5.5 0 00.496-.868L8 8.71V3.5z"/>
+                        <path d="M8 16A8 8 0 108 0a8 8 0 000 16zm7-8A7 7 0 111 8a7 7 0 0114 0z"/>
+                    </svg>
+                    <span id="timer-display">00:00</span>
+                </div>
+            </div>
+            <div class="header-right">
+                <span class="question-counter" id="question-counter">1 / 10</span>
+            </div>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="progress-container">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
+
+        <!-- Quiz Content -->
+        <div class="quiz-container">
+            <div class="quiz-content">
+                <h2 class="question-number" id="question-number">Question 1 of 10</h2>
+                <p class="question-text" id="question-text"></p>
+
+                <div class="answers-container" id="answers-container">
+                    <!-- Answer options will be inserted here -->
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <div class="quiz-navigation">
+                <button id="prev-btn" class="btn btn-secondary" disabled>Previous</button>
+                <button id="next-btn" class="btn btn-primary">Next</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Page -->
+    <section id="results-page" class="page">
+        <div class="container">
+            <div class="card results-card">
+                <h1>Quiz Complete!</h1>
+                
+                <div class="results-stats">
+                    <div class="stat-item">
+                        <div class="stat-value" id="score-display">0/10</div>
+                        <div class="stat-label">Your Score</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="percentage-display">0%</div>
+                        <div class="stat-label">Accuracy</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="time-spent-display">0:00</div>
+                        <div class="stat-label">Time Spent</div>
+                    </div>
+                </div>
+
+                <p class="feedback-message" id="feedback-message"></p>
+
+                <div class="button-group">
+                    <button id="restart-btn" class="btn btn-secondary">New Quiz</button>
+                    <button id="home-btn" class="btn btn-primary">Back to Home</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
