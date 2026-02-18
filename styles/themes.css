@@ -1,0 +1,102 @@
+:root {
+    /* Base Measurements */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 16px;
+    --space-unit: 1rem;
+    
+    /* Animation Speeds */
+    --trans-speed: 0.3s;
+    --trans-bounce: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* === THEME DEFINITIONS === */
+
+/* 1. Light (Default) */
+[data-theme="light"] {
+    --bg-app: #FAFAFA;
+    --bg-card: #FFFFFF;
+    --bg-hover: #F4F4F5;
+    --text-primary: #18181B;
+    --text-secondary: #71717A;
+    --border: #E4E4E7;
+    --accent: #2563EB; /* Blue */
+    --accent-fg: #FFFFFF;
+    --success-bg: #DCFCE7;
+    --success-border: #86EFAC;
+    --error-bg: #FEE2E2;
+    --error-border: #FCA5A5;
+}
+
+/* 2. Dark */
+[data-theme="dark"] {
+    --bg-app: #18181B;
+    --bg-card: #27272A;
+    --bg-hover: #3F3F46;
+    --text-primary: #F4F4F5;
+    --text-secondary: #A1A1AA;
+    --border: #3F3F46;
+    --accent: #60A5FA;
+    --accent-fg: #18181B;
+    --success-bg: #064E3B;
+    --success-border: #059669;
+    --error-bg: #7F1D1D;
+    --error-border: #991B1B;
+}
+
+/* 3. Minimal (High Contrast / Monochrome) */
+[data-theme="minimal"] {
+    --bg-app: #000000;
+    --bg-card: #000000;
+    --bg-hover: #1A1A1A;
+    --text-primary: #FFFFFF;
+    --text-secondary: #888888;
+    --border: #333333;
+    --accent: #FFFFFF;
+    --accent-fg: #000000;
+    --success-bg: #000000;
+    --success-border: #FFFFFF;
+    --error-bg: #000000;
+    --error-border: #666666;
+}
+
+/* 4. Soft Paper (Warm) */
+[data-theme="soft-paper"] {
+--bg-app:        #fcfbf7;
+--bg-card:       #fcfbf7;
+--bg-hover:      #f2f0ea; 
+
+--text-primary:  #4a4a4a;
+--text-secondary:#6e6760;
+
+--border:        #d7d0c0;
+
+--accent:        #c0392b;
+--accent-fg:     #ffffff;
+
+--success-bg:     #e6f4ea;
+--success-border: #2e7d32;
+--success-text:   #1b5e20;
+
+--error-bg:       #fdecec;
+--error-border:   #c62828;
+--error-text:     #8e1c1c;
+
+}
+
+
+/* 5. Nordic (Cool) */
+ [data-theme="nordic"] {
+    --bg-app: #2E3440;
+    --bg-card: #3B4252;
+    --bg-hover: #434C5E;
+    --text-primary: #ECEFF4;
+    --text-secondary: #D8DEE9;
+    --border: #4C566A;
+    --accent: #88C0D0;
+    --accent-fg: #2E3440;
+    --success-bg: #A3BE8C;
+    --success-border: #8FBCBB;
+    --error-bg: #BF616A;
+    --error-border: #D08770;
+} 

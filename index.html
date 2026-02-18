@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice | Study Session</title>
+    <link rel="stylesheet" href="styles/themes.css">
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body data-theme="light">
+
+    <nav class="app-shell">
+        <div class="shell-left">
+            <button id="theme-toggle" class="btn-text" aria-label="Toggle Theme">
+                <span class="theme-indicator"></span>
+                <span id="theme-label">Light</span>
+            </button>
+        </div>
+        <div class="shell-right" id="session-info">
+            <div class="timer-badge">
+                <span id="timer-display">00:00</span> <span>min</span>
+            </div>
+        </div>
+    </nav>
+
+    <main id="app-root">
+        
+        <section class="view active" data-view="setup">
+            <div class="card setup-container">
+                <header class="card-header">
+                    <h1>Session Setup</h1>
+                    <p class="subtitle">Configure your study parameters.</p>
+                </header>
+                
+                <div class="input-stack">
+                    <div class="select-wrapper">
+                        <label for="subject">Subject</label>
+                        <select id="subject"><option value="" selected disabled>Select Subject</option></select>
+                    </div>
+
+                    <div class="select-wrapper disabled" id="wrap-grade">
+                        <label for="grade">Grade Level</label>
+                        <select id="grade" disabled><option value="" selected disabled>Select Grade</option></select>
+                    </div>
+
+                    <div class="select-wrapper disabled" id="wrap-unit">
+                        <label for="unit">Unit / Topic</label>
+                        <select id="unit" disabled><option value="" selected disabled>Select Unit</option></select>
+                    </div>
+                </div>
+
+                <div class="action-row">
+                    <button id="btn-to-time" class="btn-primary" disabled>Continue</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="view" data-view="time">
+            <div class="card time-container">
+                <header class="card-header">
+                    <h1>Time Commitment</h1>
+                    <p class="subtitle">Deep work requires a bounded timeframe.</p>
+                </header>
+
+                <div class="time-input-wrapper">
+                    <span class="unit-label">Enter time in minutes</span> 
+                    <input type="number" id="time-input" min="1" max="10000" placeholder="1-10000" oninput="if(value > 10000) value = 10000; if(value < 1) value = 1;">
+                </div>
+
+                <div class="action-row">
+                    <button id="btn-start" class="btn-primary">Begin Session</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="view" data-view="quiz">
+            <div class="quiz-layout">
+                <div class="progress-track">
+                    <div id="progress-fill" class="progress-fill"></div>
+                </div>
+
+                <div class="question-container">
+                    <span class="meta-text" id="q-meta">Question 1 of 20</span>
+                    <h2 id="q-text">Question text loads here...</h2>
+                </div>
+
+                <div id="options-grid" class="options-grid">
+                    </div>
+
+                <footer class="quiz-footer">
+                    <button id="btn-prev" class="btn-ghost" disabled>Previous</button>
+                    <button id="btn-next" class="btn-ghost">Skip</button>
+                </footer>
+            </div>
+        </section>
+
+        <section class="view" data-view="results">
+            <div class="card result-container">
+                <header class="card-header">
+                    <h1>Session Complete</h1>
+                </header>
+                
+                <div class="score-lockup">
+                    <span id="score-val" class="score-big">0%</span>
+                    <span class="score-label">Accuracy</span>
+                </div>
+
+                <div class="stat-row">
+                    <p id="time-stat">Time: 00:00 / 00:00</p>
+                </div>
+
+                <div class="action-row">
+                    <button id="btn-restart" class="btn-primary">New Session</button>
+                    <button id="btn-home" class="btn-text">Back to Home</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script type="module" src="scripts/app.js"></script>
+</body>
+</html>
